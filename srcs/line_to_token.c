@@ -12,5 +12,10 @@ int line_to_token(char *str)
     free(tab);
     if (token == NULL)
         return (ERROR);
+    if (tokenizer(token) == ERROR)
+    {
+        del_all(&token);
+        return (ERROR);
+    }
     return (SUCCESS);
 }

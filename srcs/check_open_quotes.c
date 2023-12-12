@@ -19,8 +19,6 @@ int check_open_quotes(char *str)
 			dquote = !dquote;
         i++;
 	}
-    //printf("%d\n", squote);
-    //printf("%d\n", dquote);
     if (squote || dquote)
         return (0);
     else
