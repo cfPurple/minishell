@@ -1,9 +1,9 @@
 #include "minishell.h"
 
-int	quote_word_expander(t_token *cmd_line)
+int	quote_word_expander(t_token *token)
 {
-	char	**sep_word;
+	char	**word_tab;
 
-	sep_word = sep_quote_word(cmd_line->word);
+	word_tab = sep_quote_word(token->word);
 
 }

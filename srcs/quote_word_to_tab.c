@@ -1,6 +1,6 @@
 #include "minishell.h"
 
-char	**sep_quote_word(char *str)
+char	**quote_word_to_tab(char *str)
 {
     char	**sep_str;
 
