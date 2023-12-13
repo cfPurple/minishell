@@ -1,4 +1,4 @@
-#include "minishell"
+#include "minishell.h"
 
 int	add_new_node(t_token *token, char *line)
 {

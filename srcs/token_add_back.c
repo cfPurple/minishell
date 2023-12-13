@@ -1,4 +1,4 @@
-#include "minishell.c"
+#include "minishell.h"
 
 void	token_add_back(t_token **lst, t_token *new)
 {
@@ -11,6 +11,6 @@ void	token_add_back(t_token **lst, t_token *new)
 		*lst = new;
 		return ;
 	}
-	token = ft_lstlast(*lst);
+	token = ft_lstlast_token(*lst);
 	token->next = new;
 }

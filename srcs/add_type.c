@@ -21,4 +21,5 @@ int	add_type(char *str, int last_token)
 		return (FD);
 	else
 		return (WORD);
+	return (-1);
 }

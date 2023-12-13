@@ -2,18 +2,18 @@
 
 int	count_word(char *str)
 {
+    int		i;
 	int		j;
-	int		i;
-	bool	quote_flag;
+	int     state;
 
+    i = 0;
 	j = 1;
-	i = 0;
-	quote_flag = open_quote(str, i);
+	state = open_quote(str, i);
 	while (str[i])
 	{
-		if (open_quote(str, i) != quote_flag)
+		if (open_quote(str, i) != state)
 		{
-			quote_flag = !quote_flag;
+			state = !state;
 			j++;
 		}
 		i++;

@@ -1,4 +1,4 @@
-#include <minishell.h>
+#include "minishell.h"
 
 int line_to_token(char *str)
 {
@@ -14,7 +14,7 @@ int line_to_token(char *str)
         return (ERROR);
     if (tokenizer(token) == ERROR)
     {
-        del_all(&token);
+        free_all_token(&token);
         return (ERROR);
     }
     return (SUCCESS);

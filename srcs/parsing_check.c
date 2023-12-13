@@ -9,13 +9,19 @@ int	parsing_check(t_token *token)
 	while (token)
 	{
 		if (check_token(token->type, last_token_t) == ERROR)
-			return (print_pars_err(token->word), ERROR);
+		{
+			print_pars_err(token->word);
+			return (ERROR);
+		}
         last_token = token;
 		last_token_t = token->type;
 		token = token->next;
 	}
 	if (last_token_t == R_IN || last_token_t == R_OUT || last_token_t == APPEND
         || last_token_t == HEREDOC || last_token_t == PIPE)
-		return (print_pars_err(token->word), ERROR);
+	{
+		print_pars_err(token->word);
+		return (ERROR);
+	}
 	return (SUCCESS);
 }

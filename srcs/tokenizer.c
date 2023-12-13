@@ -16,5 +16,5 @@ int	tokenizer(t_token *token)
 	if (parsing_check(token) == ERROR)
 		return (ERROR);
 	else
-		return (expand(token));
+		return (expander(token));
 }

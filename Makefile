@@ -4,6 +4,9 @@ NAME := minishell
 # Dossier source
 SRC_DIR := srcs
 
+LIBFT_DIR = libft
+LIBFT = $(LIBFT_DIR)/libft.a
+
 # Dossier include
 INC_DIR := include
 
@@ -28,12 +31,20 @@ $(OBJ_DIR):
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
 	cc $(CFLAGS) -c $< -o $@
 
-$(NAME): $(OBJS)
-	cc $(CFLAGS) $(OBJS) -o $(NAME) -lreadline
+$(NAME): $(OBJS) $(LIBFT)
+	cc $(CFLAGS) $(OBJS) -o $(NAME) libft/libft.a -lreadline
+
+$(LIBFT):
+	make -C $(LIBFT_DIR)
 
 clean:
-	rm -f $(OBJ_DIR)/*.o
-fclean:
+	rm -r $(OBJ_DIR)
+	make -C $(LIBFT_DIR) clean
+
+fclean: clean
 	rm -f $(NAME)
+	make -C libft fclean
+
+re: fclean all
 
 .PHONY: clean

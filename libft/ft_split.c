@@ -82,7 +82,7 @@ static char	**writetab(char **tab, char *str, char c)
 		tab[n++][i] = '\0';
 	}
 	tab[n] = NULL;
-	return (tab);`
+	return (tab);
 }
 
 

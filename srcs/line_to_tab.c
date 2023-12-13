@@ -24,6 +24,6 @@ char **line_to_tab(char *str)
 			i++;
 		j++;
 	}
-	tab[j] = '\0';
+	tab[j] = NULL;
 	return (tab);
 }
