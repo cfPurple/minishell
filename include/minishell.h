@@ -11,6 +11,8 @@
 #define ERROR -1
 #define SUCCESS 0
 
+# define ERROR_PARSING "$> bash : syntax error near unexpected token"
+
 typedef enum e_type
 {
 	APPEND = 0,

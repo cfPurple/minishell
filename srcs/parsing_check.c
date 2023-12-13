@@ -20,7 +20,7 @@ int	parsing_check(t_token *token)
 	if (last_token_t == R_IN || last_token_t == R_OUT || last_token_t == APPEND
         || last_token_t == HEREDOC || last_token_t == PIPE)
 	{
-		print_pars_err(token->word);
+		print_pars_err(last_token->word);
 		return (ERROR);
 	}
 	return (SUCCESS);
