@@ -20,7 +20,6 @@ int	expander(t_token *token_list)
         }
 		token = token->next;
 	}
-    print_token_list(token_list);
-	//exec(token_list);
+	exec(token_list);
 	return (SUCCESS);
 }
