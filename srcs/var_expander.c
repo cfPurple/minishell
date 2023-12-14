@@ -18,7 +18,7 @@ char	*var_expander(char *str)
 		return (NULL);
 	while (word_tab[++i])
 	{
-		if (ft_strlen(word_tab[i]) > 1 && word_tab[i][0] == '$')
+		if (word_tab[i][0] == '$' && ft_strlen(word_tab[i]) > 1)
 			new_word_tab[i] = var_to_value(word_tab[i]);
 		else
 			new_word_tab[i] = ft_strdup(word_tab[i]);
