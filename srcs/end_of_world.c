@@ -12,7 +12,7 @@ int end_of_word(char *str ,int i)
 			i ++;
 		return (i);
 	}
-    while (str[start])
+    while (str[i])
 	{
 		if (open_quote(str, i) == 0
 			&& (str[i] == ' ' || ft_strchr("<|>&", str[i] != 0)))
