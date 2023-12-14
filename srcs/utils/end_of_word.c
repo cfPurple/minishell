@@ -2,7 +2,7 @@
 
 int end_of_word(char *str ,int i)
 {
-    if (str[i] == 0)
+    if (!str[i])
 		return (i);
 	if (ft_strchr("<|>&", str[i]) != 0)
 	{

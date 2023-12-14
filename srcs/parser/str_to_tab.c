@@ -13,14 +13,14 @@ char **str_to_tab(char *str)
 		return (0);
 	j = 0;
     i = 0; 
-	while (j < nbr_of_token(str) && str[i])
+	while (str[i] && j < nbr_of_token(str))
 	{
 		start = start_of_word(str, i);
 		end = end_of_word(str, start);
 		tab[j] = ft_substr(str, start, end - start);
 		if (!tab[j])
 			return (NULL);
-		while (i < end && str[i])
+		while (str[i] && i < end)
 			i++;
 		j++;
 	}
