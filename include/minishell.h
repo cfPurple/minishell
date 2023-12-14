@@ -57,6 +57,7 @@ int		qword_expander(t_token *token);
 int		word_expander(t_token *token);
 char	*qvar_expander(char *str);
 char	*var_expander(char *str);
+char	*var_to_env_value(char *word);
 
 
 /**********UTILS************/
@@ -92,8 +93,6 @@ char	*var_to_value(char *str);
 int		open_quote(char *str, int start);
 void    print_pars_err(char *str);
 void	replace_word(t_token *token, char *new_word);
-char	*var_expander(char *str);
-char	*var_to_env_value(char *word);
 
 /*************TEST***************/
 void	print_token_list(t_token *lst);
