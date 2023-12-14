@@ -44,11 +44,11 @@ extern int	g_error;
 int main(int ac, char **av);
 
 /**********PARSING**********/
-int		parse_line(char *str);
-int		line_to_token(char *str);
-char	**line_to_tab(char *str);
+int		line_parsing(char *str);
+int		str_to_token(char *str);
+char	**str_to_tab(char *str);
 t_token	*tab_to_token( char **tab);
-int		tokenizer(t_token *token);
+int		conv_in_token(t_token *token);
 int		parsing_check(t_token *token);
 
 /**********EXPANDER*********/
@@ -60,8 +60,8 @@ char	*var_expander(char *str);
 
 
 /**********UTILS************/
-int 	check_open_quotes(char *str);
-int		only_space(char *str);
+int 	check_quotes(char *str);
+int		check_spaces(char *str);
 int 	nbr_of_token(char *str);
 int 	start_of_word(char *str ,int i);
 int 	end_of_word(char *str ,int start);

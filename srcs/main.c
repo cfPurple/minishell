@@ -14,7 +14,7 @@ int main(int ac, char **av)
         str = readline("minishell $> ");
         if (str == NULL)
             break;
-        parse_line(str);
+        line_parsing(str);
         add_history(str);
         rl_on_new_line();
         free(str);
