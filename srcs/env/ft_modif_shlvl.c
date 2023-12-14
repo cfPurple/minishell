@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_cmd.c                                      :+:      :+:    :+:   */
+/*   ft_modif_shlvl.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdias-ba <rdias-ba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/22 20:08:38 by rdias-ba          #+#    #+#             */
-/*   Updated: 2023/12/14 02:46:47 by rdias-ba         ###   ########.fr       */
+/*   Created: 2023/12/14 03:45:10 by rdias-ba          #+#    #+#             */
+/*   Updated: 2023/12/14 04:04:19 by rdias-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	ft_free_cmd(t_cmd *cmd)
+void	ft_modif_shlvl(void)
 {
-	t_cmd	*tmp;
+	static const char	str[7] = "SHLVL=\0";
+	char				*shlvl;
+	char				*tmp;
+	int					lvl;
 
-	while (cmd)
-	{
-		if (cmd->args)
-			ft_delete_all(&cmd->args);
-		if (cmd->rdir)
-			ft_delete_all(&cmd->rdir);
-		if (cmd->fd[0] != 0)
-			close(cmd->fd[0]);
-		if (cmd->fd[1] != 1)
-			close(cmd->fd[1]);
-		tmp = cmd;
-		cmd = tmp->next;
-		free(tmp);
-	}
+	shlvl = ft_find_value("SHLVL");
+	if (!shlvl)
+		return ;
+	lvl = ft_atoi(shlvl);
+	ft_del_from_env("SHLVL");
+	++lvl;
+	tmp = ft_itoa(lvl);
+	shlvl = ft_strjoin(str, tmp);
+	free(tmp);
+	ft_add_to_env(shlvl);
+	free(shlvl);
 }

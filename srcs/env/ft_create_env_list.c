@@ -1,33 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_cmd.c                                      :+:      :+:    :+:   */
+/*   ft_create_env_list.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdias-ba <rdias-ba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/22 20:08:38 by rdias-ba          #+#    #+#             */
-/*   Updated: 2023/12/14 02:46:47 by rdias-ba         ###   ########.fr       */
+/*   Created: 2023/12/14 02:24:37 by rdias-ba          #+#    #+#             */
+/*   Updated: 2023/12/14 03:22:57 by rdias-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	ft_free_cmd(t_cmd *cmd)
+t_env	*ft_create_env_list(char **env)
 {
-	t_cmd	*tmp;
+	t_env	*lst;
+	t_env	*tmp;
 
-	while (cmd)
+	lst = NULL;
+	tmp = NULL;
+	while (*env)
 	{
-		if (cmd->args)
-			ft_delete_all(&cmd->args);
-		if (cmd->rdir)
-			ft_delete_all(&cmd->rdir);
-		if (cmd->fd[0] != 0)
-			close(cmd->fd[0]);
-		if (cmd->fd[1] != 1)
-			close(cmd->fd[1]);
-		tmp = cmd;
-		cmd = tmp->next;
-		free(tmp);
+		if (!ft_add_var_to_env(&lst, *env))
+		{
+			while (lst)
+			{
+				tmp = lst;
+				lst = lst->next;
+				free(tmp->var);
+				free(tmp->key);
+				free(tmp->value);
+				free(tmp);
+			}
+			return (NULL);
+		}
+		env++;
 	}
+	return (lst);
 }
+

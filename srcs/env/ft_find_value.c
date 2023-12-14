@@ -1,33 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_cmd.c                                      :+:      :+:    :+:   */
+/*   ft_find_value.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdias-ba <rdias-ba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/22 20:08:38 by rdias-ba          #+#    #+#             */
-/*   Updated: 2023/12/14 02:46:47 by rdias-ba         ###   ########.fr       */
+/*   Created: 2023/12/14 03:52:18 by rdias-ba          #+#    #+#             */
+/*   Updated: 2023/12/14 03:52:32 by rdias-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	ft_free_cmd(t_cmd *cmd)
+char	*ft_find_value(char *var)
 {
-	t_cmd	*tmp;
+	t_env	*env;
+	char	*tmp;
 
-	while (cmd)
+	if (!var)
+		return (NULL);
+	env = *ft_get_all_env();
+	while (env)
 	{
-		if (cmd->args)
-			ft_delete_all(&cmd->args);
-		if (cmd->rdir)
-			ft_delete_all(&cmd->rdir);
-		if (cmd->fd[0] != 0)
-			close(cmd->fd[0]);
-		if (cmd->fd[1] != 1)
-			close(cmd->fd[1]);
-		tmp = cmd;
-		cmd = tmp->next;
-		free(tmp);
+		if (ft_compare_keys(env->var, var))
+		{
+			tmp = env->var;
+			while (*tmp != '=')
+				tmp++;
+			tmp++;
+			return (tmp);
+		}
+		env = env->next;
 	}
+	return (NULL);
 }
+

@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_cmd.c                                      :+:      :+:    :+:   */
+/*   ft_get_env_len.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdias-ba <rdias-ba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/22 20:08:38 by rdias-ba          #+#    #+#             */
-/*   Updated: 2023/12/14 02:46:47 by rdias-ba         ###   ########.fr       */
+/*   Created: 2023/12/14 03:40:49 by rdias-ba          #+#    #+#             */
+/*   Updated: 2023/12/14 03:40:58 by rdias-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	ft_free_cmd(t_cmd *cmd)
+int	ft_get_env_len(t_env *env)
 {
-	t_cmd	*tmp;
+	int	i;
 
-	while (cmd)
+	i = 0;
+	while (env)
 	{
-		if (cmd->args)
-			ft_delete_all(&cmd->args);
-		if (cmd->rdir)
-			ft_delete_all(&cmd->rdir);
-		if (cmd->fd[0] != 0)
-			close(cmd->fd[0]);
-		if (cmd->fd[1] != 1)
-			close(cmd->fd[1]);
-		tmp = cmd;
-		cmd = tmp->next;
-		free(tmp);
+		i++;
+		env = env->next;
 	}
+	return (i);
 }
+

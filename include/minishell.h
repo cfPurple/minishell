@@ -6,7 +6,7 @@
 /*   By: rdias-ba <rdias-ba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 15:52:13 by rdias-ba          #+#    #+#             */
-/*   Updated: 2023/12/01 13:04:27 by rdias-ba         ###   ########.fr       */
+/*   Updated: 2023/12/14 04:04:17 by rdias-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ void	ft_free_tabs(char **tab);
 void	ft_del_tokens(t_token *tokens);
 void	free_2_tabs(char **s1, char **s2);
 void	ft_free_cmd(t_cmd *cmd);
+void	ft_free_all_env(t_env *env);
 void	ft_del_t_cmd(t_cmd *cmd);
 t_token	*ft_delete_all(t_token **node);
 t_token	*goto_last_node(t_token *token);
@@ -132,6 +133,26 @@ int		ft_exec_export(t_token *token);
 int		ft_exec_unset(t_token *token);
 int		ft_exec_env(int fd);
 int		ft_exec_exit(t_token *token, t_cmd *cmd);
+/***********ENV************/
+t_env	**ft_get_env(char **env, char *to_add, char *to_del);
+t_env	*ft_get_last_env(t_env *env);
+char	*ft_add_var_to_env(t_env **env, char *to_add);
+int		ft_compare_keys(char *key, char *to_find);
+char	**ft_convert_env_to_tab(t_env *env);
+t_env	*ft_create_env_list(char **env);
+void	ft_del_env(void);
+t_env	*ft_del_node(t_env *env, char *to_del);
+char	*ft_find_value(char *var);
+int		ft_get_env_len(t_env *env);
+void	ft_init_env(int ac, char **av, char **env);
+void	ft_add_to_env(char *to_add);
+void	ft_del_from_env(char *to_del);
+t_env	**ft_get_all_env(void);
+int		ft_get_key_len(char *var);
+char	*ft_get_key_section(char *var, char *key);
+int		ft_get_value_len(char *var);
+char	*ft_get_value_section(char *var, char *value);
+void	ft_modif_shlvl(void);
 /***********EXPAND************/
 char	*expand_var(char *word);
 int		dollar_word_count(char *str);

@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_cmd.c                                      :+:      :+:    :+:   */
+/*   ft_free_all_env.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdias-ba <rdias-ba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/22 20:08:38 by rdias-ba          #+#    #+#             */
-/*   Updated: 2023/12/14 02:46:47 by rdias-ba         ###   ########.fr       */
+/*   Created: 2023/12/14 03:57:00 by rdias-ba          #+#    #+#             */
+/*   Updated: 2023/12/14 03:58:47 by rdias-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	ft_free_cmd(t_cmd *cmd)
+void	ft_free_all_env(t_env *env)
 {
-	t_cmd	*tmp;
+	t_env	*tmp;
 
-	while (cmd)
+	while (env)
 	{
-		if (cmd->args)
-			ft_delete_all(&cmd->args);
-		if (cmd->rdir)
-			ft_delete_all(&cmd->rdir);
-		if (cmd->fd[0] != 0)
-			close(cmd->fd[0]);
-		if (cmd->fd[1] != 1)
-			close(cmd->fd[1]);
-		tmp = cmd;
-		cmd = tmp->next;
+		tmp = env;
+		free(tmp->var);
+		tmp->var = NULL;
+		free(tmp->key);
+		tmp->key = NULL;
+		free(tmp->value);
+		tmp->value = NULL;
+		env = env->next;
 		free(tmp);
+		tmp = NULL;
 	}
 }
+

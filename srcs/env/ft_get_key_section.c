@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_cmd.c                                      :+:      :+:    :+:   */
+/*   ft_get_key_section.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdias-ba <rdias-ba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/22 20:08:38 by rdias-ba          #+#    #+#             */
-/*   Updated: 2023/12/14 02:46:47 by rdias-ba         ###   ########.fr       */
+/*   Created: 2023/12/14 02:33:43 by rdias-ba          #+#    #+#             */
+/*   Updated: 2023/12/14 02:59:38 by rdias-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	ft_free_cmd(t_cmd *cmd)
+char	*ft_get_key_section(char *var, char *key)
 {
-	t_cmd	*tmp;
+	int	key_len;
+	int	i;
 
-	while (cmd)
+	key_len = ft_get_key_len(var);
+	key = (char *)malloc(sizeof(char) * (key_len + 1));
+	if (!key)
+		return (NULL);
+	i = 0;
+	while (i < key_len)
 	{
-		if (cmd->args)
-			ft_delete_all(&cmd->args);
-		if (cmd->rdir)
-			ft_delete_all(&cmd->rdir);
-		if (cmd->fd[0] != 0)
-			close(cmd->fd[0]);
-		if (cmd->fd[1] != 1)
-			close(cmd->fd[1]);
-		tmp = cmd;
-		cmd = tmp->next;
-		free(tmp);
+		key[i] = var[i];
+		i++;
 	}
+	key[i] = '\0';
+	return (key);
 }
+
