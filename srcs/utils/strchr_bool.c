@@ -1,39 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_tabs.c                                        :+:      :+:    :+:   */
+/*   strchr_bool.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdias-ba <rdias-ba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/20 22:07:57 by rdias-ba          #+#    #+#             */
-/*   Updated: 2023/12/14 16:35:38 by rdias-ba         ###   ########.fr       */
+/*   Created: 2023/11/22 18:58:23 by rdias-ba          #+#    #+#             */
+/*   Updated: 2023/12/14 16:37:26 by rdias-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	free_tabs(char **tab)
+bool	strchr_bool(const char *s, int c)
 {
-	int	i;
-
-	i = 0;
-	if (!tab)
-		return ;
-	while (tab[i])
+	if ((char)c == '\0')
+		return (false);
+	while (*s)
 	{
-		free(tab[i]);
-		tab[i] = NULL;
-		i++;
+		if (*s == (char)c)
+			return (true);
+		s++;
 	}
-	free(tab[i]);
-	free(tab);
-	tab = NULL;
-}
-
-void	free_2_tabs(char **s1, char **s2)
-{
-	if (s1)
-		free_tabs(s1);
-	if (s2)
-		free_tabs(s2);
+	return (false);
 }

@@ -1,39 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_tabs.c                                        :+:      :+:    :+:   */
+/*   get_value_section.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdias-ba <rdias-ba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/20 22:07:57 by rdias-ba          #+#    #+#             */
-/*   Updated: 2023/12/14 16:35:38 by rdias-ba         ###   ########.fr       */
+/*   Created: 2023/12/14 03:02:56 by rdias-ba          #+#    #+#             */
+/*   Updated: 2023/12/14 16:04:29 by rdias-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	free_tabs(char **tab)
+char	*get_value_section(char *var, char *value)
 {
+	int	value_len;
 	int	i;
+	int	j;
 
-	i = 0;
-	if (!tab)
-		return ;
-	while (tab[i])
+	value_len = get_value_len(var);
+	value = (char *)malloc(sizeof(char) * (value_len + 1));
+	if (!value)
+		return (NULL);
+	i = get_key_len(var) + 1;
+	j = 0;
+	while (var[i])
 	{
-		free(tab[i]);
-		tab[i] = NULL;
+		value[j] = var[i];
+		j++;
 		i++;
 	}
-	free(tab[i]);
-	free(tab);
-	tab = NULL;
+	value[j] = '\0';
+	return (value);
 }
 
-void	free_2_tabs(char **s1, char **s2)
-{
-	if (s1)
-		free_tabs(s1);
-	if (s2)
-		free_tabs(s2);
-}

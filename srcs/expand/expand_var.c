@@ -6,7 +6,7 @@
 /*   By: rdias-ba <rdias-ba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 20:30:40 by rdias-ba          #+#    #+#             */
-/*   Updated: 2023/11/27 16:54:54 by rdias-ba         ###   ########.fr       */
+/*   Updated: 2023/12/14 16:22:05 by rdias-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static char	*replace_by_env(char *word)
 	t_env	*current;
 	char	*new_str;
 
-	current = *ft_get_env(0, 0, 0);
+	current = *get_env(0, 0, 0);
 	while (current != NULL)
 	{
 		if (ft_strcmp(word + 1, current->key) == 0)

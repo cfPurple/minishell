@@ -1,39 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_tabs.c                                        :+:      :+:    :+:   */
+/*   find_value.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdias-ba <rdias-ba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/20 22:07:57 by rdias-ba          #+#    #+#             */
-/*   Updated: 2023/12/14 16:35:38 by rdias-ba         ###   ########.fr       */
+/*   Created: 2023/12/14 03:52:18 by rdias-ba          #+#    #+#             */
+/*   Updated: 2023/12/14 15:59:49 by rdias-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	free_tabs(char **tab)
+char	*find_value(char *var)
 {
-	int	i;
+	t_env	*env;
+	char	*tmp;
 
-	i = 0;
-	if (!tab)
-		return ;
-	while (tab[i])
+	if (!var)
+		return (NULL);
+	env = *get_all_env();
+	while (env)
 	{
-		free(tab[i]);
-		tab[i] = NULL;
-		i++;
+		if (compare_keys(env->var, var))
+		{
+			tmp = env->var;
+			while (*tmp != '=')
+				tmp++;
+			tmp++;
+			return (tmp);
+		}
+		env = env->next;
 	}
-	free(tab[i]);
-	free(tab);
-	tab = NULL;
+	return (NULL);
 }
 
-void	free_2_tabs(char **s1, char **s2)
-{
-	if (s1)
-		free_tabs(s1);
-	if (s2)
-		free_tabs(s2);
-}

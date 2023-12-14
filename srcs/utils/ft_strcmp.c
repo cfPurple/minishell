@@ -1,39 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_tabs.c                                        :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdias-ba <rdias-ba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/20 22:07:57 by rdias-ba          #+#    #+#             */
-/*   Updated: 2023/12/14 16:35:38 by rdias-ba         ###   ########.fr       */
+/*   Created: 2023/12/14 16:40:01 by rdias-ba          #+#    #+#             */
+/*   Updated: 2023/12/14 16:40:32 by rdias-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	free_tabs(char **tab)
+int	ft_strcmp(char *s1, char *s2)
 {
 	int	i;
 
 	i = 0;
-	if (!tab)
-		return ;
-	while (tab[i])
-	{
-		free(tab[i]);
-		tab[i] = NULL;
+	while (s1[i] && s2[i] && s1[i] == s2[i])
 		i++;
-	}
-	free(tab[i]);
-	free(tab);
-	tab = NULL;
+	return (s1[i] - s2[i]);
 }
 
-void	free_2_tabs(char **s1, char **s2)
-{
-	if (s1)
-		free_tabs(s1);
-	if (s2)
-		free_tabs(s2);
-}

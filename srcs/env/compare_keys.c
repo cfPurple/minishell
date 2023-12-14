@@ -1,39 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_tabs.c                                        :+:      :+:    :+:   */
+/*   compare_keys.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdias-ba <rdias-ba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/20 22:07:57 by rdias-ba          #+#    #+#             */
-/*   Updated: 2023/12/14 16:35:38 by rdias-ba         ###   ########.fr       */
+/*   Created: 2023/12/14 03:28:08 by rdias-ba          #+#    #+#             */
+/*   Updated: 2023/12/14 15:58:00 by rdias-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	free_tabs(char **tab)
+int	compare_keys(char *key, char *to_find)
 {
-	int	i;
-
-	i = 0;
-	if (!tab)
-		return ;
-	while (tab[i])
+	if (!to_find)
+		return (false);
+	while (*to_find && *key && *key != '='
+		&& *to_find != '=' && *key == *to_find)
 	{
-		free(tab[i]);
-		tab[i] = NULL;
-		i++;
+		++key;
+		++to_find;
 	}
-	free(tab[i]);
-	free(tab);
-	tab = NULL;
+	if (*key == '=' && (!*to_find || *to_find == '='))
+		return (true);
+	return (false);
 }
 
-void	free_2_tabs(char **s1, char **s2)
-{
-	if (s1)
-		free_tabs(s1);
-	if (s2)
-		free_tabs(s2);
-}

@@ -6,7 +6,7 @@
 /*   By: rdias-ba <rdias-ba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 15:19:52 by rdias-ba          #+#    #+#             */
-/*   Updated: 2023/11/20 20:52:32 by rdias-ba         ###   ########.fr       */
+/*   Updated: 2023/12/14 16:14:25 by rdias-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ int	exec_rdir_heredoc(t_cmd *cmd)
 	int	fd;
 
 	ret = dup(STDIN_FILENO);
-	signal(SIGINT, &ft_sig_heredoc);
+	signal(SIGINT, &sig_heredoc);
 	if (is_quote_heredoc(cmd->rdir) == true)
 		fd = heredoc_no_expand(cmd->rdir);
 	else
@@ -105,10 +105,10 @@ int	exec_rdir_heredoc(t_cmd *cmd)
 	if (g_error == 128)
 	{
 		dup2(ret, 0);
-		ft_init_signal(false);
+		init_signal(false);
 		return ((close(ret), write(STDOUT_FILENO, "\n", 1), g_error = 130, -1));
 	}
-	fd = ((close(ret), ft_init_signal(false), create_heredoc(0)));
+	fd = ((close(ret), init_signal(false), create_heredoc(0)));
 	if (cmd->fd[IN] != STDOUT_FILENO)
 	{
 		dup2(fd, cmd->fd[IN]);

@@ -6,7 +6,7 @@
 /*   By: rdias-ba <rdias-ba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 14:21:46 by rdias-ba          #+#    #+#             */
-/*   Updated: 2023/12/01 13:51:28 by rdias-ba         ###   ########.fr       */
+/*   Updated: 2023/12/14 16:19:41 by rdias-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	exec_rdir_rin(t_cmd *cmd)
 	char	*name;
 
 	if (!cmd->rdir->next)
-		ft_print_error_msg(ERROR_RED);
+		print_error_msg(ERROR_RED);
 	name = cmd->rdir->next->word;
 	fd = open(name, O_RDONLY);
 	if (fd < 0)
@@ -45,7 +45,7 @@ static int	exec_rdir_rout(t_cmd *cmd)
 	char	*name;
 
 	if (!cmd->rdir->next)
-		ft_print_error_msg(ERROR_RED);
+		print_error_msg(ERROR_RED);
 	name = cmd->rdir->next->word;
 	fd = open(name, O_WRONLY | O_TRUNC | O_CREAT, 0644);
 	if (fd < 0)
@@ -70,7 +70,7 @@ static int	exec_rdir_append(t_cmd *cmd)
 	char	*name;
 
 	if (!cmd->rdir->next)
-		ft_print_error_msg(ERROR_RED);
+		print_error_msg(ERROR_RED);
 	name = cmd->rdir->next->word;
 	fd = open(name, O_WRONLY | O_APPEND | O_CREAT, 0644);
 	if (fd < 0)

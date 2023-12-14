@@ -6,13 +6,13 @@
 /*   By: rdias-ba <rdias-ba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 15:47:03 by rdias-ba          #+#    #+#             */
-/*   Updated: 2023/11/20 20:40:30 by rdias-ba         ###   ########.fr       */
+/*   Updated: 2023/12/14 16:20:06 by rdias-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	ft_sig_heredoc(int sig)
+void	sig_heredoc(int sig)
 {
 	(void)sig;
 	close(STDIN_FILENO);
@@ -20,7 +20,7 @@ void	ft_sig_heredoc(int sig)
 	return ;
 }
 
-static void	ft_handle_signal(int sig)
+static void	handle_signal(int sig)
 {
 	if (sig == SIGQUIT)
 		return ;
@@ -34,11 +34,11 @@ static void	ft_handle_signal(int sig)
 	}
 }
 
-void	ft_init_signal(int type)
+void	init_signal(int type)
 {
 	if (!type)
 	{
-		signal(SIGINT, &ft_handle_signal);
+		signal(SIGINT, &handle_signal);
 		signal(SIGQUIT, SIG_IGN);
 	}
 	else if (type)

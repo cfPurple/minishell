@@ -1,39 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_tabs.c                                        :+:      :+:    :+:   */
+/*   exec_pwd.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdias-ba <rdias-ba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/20 22:07:57 by rdias-ba          #+#    #+#             */
-/*   Updated: 2023/12/14 16:35:38 by rdias-ba         ###   ########.fr       */
+/*   Created: 2023/11/22 18:49:27 by rdias-ba          #+#    #+#             */
+/*   Updated: 2023/12/14 15:54:25 by rdias-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	free_tabs(char **tab)
-{
-	int	i;
+// affiche le contenue du répertoir courent
 
-	i = 0;
-	if (!tab)
-		return ;
-	while (tab[i])
-	{
-		free(tab[i]);
-		tab[i] = NULL;
-		i++;
-	}
-	free(tab[i]);
-	free(tab);
-	tab = NULL;
-}
-
-void	free_2_tabs(char **s1, char **s2)
+int	exec_pwd(int fd)
 {
-	if (s1)
-		free_tabs(s1);
-	if (s2)
-		free_tabs(s2);
+	char	*wd;
+
+	wd = getcwd(NULL, 0);
+	if (!wd)
+		return (g_error = 127, print_error_msg("getcwd fail\n"), true);
+	ft_putstr_fd(wd, fd);
+	write(fd, "\n", 1);
+	free(wd);
+	return (g_error = 0, true);
 }

@@ -6,7 +6,7 @@
 /*   By: rdias-ba <rdias-ba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 13:56:45 by rdias-ba          #+#    #+#             */
-/*   Updated: 2023/12/01 13:38:21 by rdias-ba         ###   ########.fr       */
+/*   Updated: 2023/12/14 16:17:39 by rdias-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	close_fdtab(t_cmd *cmd)
 		close(cmd->fd[OUT]);
 }
 
-static void	do_pipe(t_cmd **cmd)
+static void	pipe_init(t_cmd **cmd)
 {
 	int	fd[2];
 
@@ -40,11 +40,11 @@ static void	do_child_wait(int pid)
 	else if (WIFSIGNALED(wait))
 	{
 		g_error = 128 + WTERMSIG(wait);
-		ft_print_sig_error();
+		print_sig_error();
 	}
 }
 
-static void	do_process(t_cmd *cmd)
+static void	process_init(t_cmd *cmd)
 {
 	t_cmd	*ptr;
 
@@ -54,13 +54,13 @@ static void	do_process(t_cmd *cmd)
 		signal(SIGINT, SIG_IGN);
 		if (cmd->pid > 0)
 			do_child_wait(cmd->pid);
-		ft_init_signal(false);
+		init_signal(false);
 		ptr = cmd;
 		cmd = cmd->next;
 		if (!ptr->args)
 			close_fdtab(ptr);
-		ft_del_tokens(ptr->args);
-		ft_del_tokens(ptr->rdir);
+		del_tokens(ptr->args);
+		del_tokens(ptr->rdir);
 		free(ptr);
 	}
 }
@@ -82,7 +82,7 @@ void	exec_launch(t_cmd *cmd)
 	{
 		error_found = false;
 		if (ptr->next)
-			do_pipe(&ptr);
+			pipe_init(&ptr);
 		if (ptr->rdir != 0)
 		{
 			ret = exec_rdir(ptr);
@@ -91,10 +91,10 @@ void	exec_launch(t_cmd *cmd)
 			if (ret == ERROR)
 				error_found = true;
 		}
-		if (!error_found && ptr->args && !ft_run_builtins(ptr->args->word, cmd))
+		if (!error_found && ptr->args && !builtins(ptr->args->word, cmd))
 			exec_fork(ptr, cmd);
 		close_fdtab(ptr);
 		ptr = ptr->next;
 	}
-	do_process(cmd);
+	process_init(cmd);
 }

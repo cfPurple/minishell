@@ -6,7 +6,7 @@
 /*   By: rdias-ba <rdias-ba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 16:56:29 by rdias-ba          #+#    #+#             */
-/*   Updated: 2023/12/01 13:39:35 by rdias-ba         ###   ########.fr       */
+/*   Updated: 2023/12/14 16:21:22 by rdias-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static char	*copy_path(void)
 	t_env	*cur_env;
 	t_env	*ptr;
 
-	cur_env = *ft_get_env(0, 0, 0);
+	cur_env = *get_env(0, 0, 0);
 	if (!cur_env)
 		return (NULL);
 	ptr = cur_env;
@@ -67,8 +67,8 @@ char	*init_path(char *cmd)
 		}
 		individual_path = ft_strjoin(paths[i], cmd);
 		if (access(individual_path, X_OK) == 0)
-			return (ft_free_tabs(paths), individual_path);
+			return (free_tabs(paths), individual_path);
 		i++;
 	}
-	return (ft_free_tabs(paths), individual_path);
+	return (free_tabs(paths), individual_path);
 }

@@ -1,39 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_tabs.c                                        :+:      :+:    :+:   */
+/*   del_t_cmd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdias-ba <rdias-ba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/20 22:07:57 by rdias-ba          #+#    #+#             */
-/*   Updated: 2023/12/14 16:35:38 by rdias-ba         ###   ########.fr       */
+/*   Created: 2023/11/27 17:35:54 by rdias-ba          #+#    #+#             */
+/*   Updated: 2023/12/14 16:34:20 by rdias-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	free_tabs(char **tab)
+void	del_tokens(t_token *tokens)
 {
-	int	i;
+	t_token	*tmp;
 
-	i = 0;
-	if (!tab)
-		return ;
-	while (tab[i])
+	while (tokens)
 	{
-		free(tab[i]);
-		tab[i] = NULL;
-		i++;
+		tmp = tokens;
+		tokens = tokens->next;
+		free(tmp->word);
+		free(tmp);
 	}
-	free(tab[i]);
-	free(tab);
-	tab = NULL;
 }
 
-void	free_2_tabs(char **s1, char **s2)
+void	del_t_cmd(t_cmd *cmd)
 {
-	if (s1)
-		free_tabs(s1);
-	if (s2)
-		free_tabs(s2);
+	t_cmd	*tmp;
+
+	while (cmd)
+	{
+		tmp = cmd->next;
+		del_tokens(cmd->args);
+		del_tokens(cmd->rdir);
+		if (cmd->fd[IN] != STDIN_FILENO)
+			close(cmd->fd[IN]);
+		if (cmd->fd[OUT] != STDOUT_FILENO)
+			close(cmd->fd[OUT]);
+		free(cmd);
+		cmd = tmp;
+	}
 }

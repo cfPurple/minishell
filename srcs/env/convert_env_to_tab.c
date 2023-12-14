@@ -1,39 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_tabs.c                                        :+:      :+:    :+:   */
+/*   convert_env_to_tab.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdias-ba <rdias-ba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/20 22:07:57 by rdias-ba          #+#    #+#             */
-/*   Updated: 2023/12/14 16:35:38 by rdias-ba         ###   ########.fr       */
+/*   Created: 2023/12/14 03:39:59 by rdias-ba          #+#    #+#             */
+/*   Updated: 2023/12/14 15:58:30 by rdias-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	free_tabs(char **tab)
+char	**convert_env_to_tab(t_env *env)
 {
-	int	i;
+	char	**start;
+	char	**tab;
+	int		len;
 
-	i = 0;
+	len = get_env_len(env);
+	tab = (char **)malloc(sizeof(char *) * (len + 1));
 	if (!tab)
-		return ;
-	while (tab[i])
+		return (NULL);
+	tab[len] = NULL;
+	start = tab;
+	while (env)
 	{
-		free(tab[i]);
-		tab[i] = NULL;
-		i++;
+		*tab = ft_strdup(env->var);
+		tab++;
+		env = env->next;
 	}
-	free(tab[i]);
-	free(tab);
-	tab = NULL;
+	return (start);
 }
 
-void	free_2_tabs(char **s1, char **s2)
-{
-	if (s1)
-		free_tabs(s1);
-	if (s2)
-		free_tabs(s2);
-}
