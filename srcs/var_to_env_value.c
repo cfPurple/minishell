@@ -2,6 +2,7 @@
 
 char	*var_to_env_value(char *word)
 {
-    (void)word;
-    return NULL;
+    char *new_str;
+    new_str = ft_strdup(word); 
+    return new_str;
 }

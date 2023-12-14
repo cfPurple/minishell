@@ -7,6 +7,7 @@ char	*var_expander(char *str)
 	char	*new_word;
 	int		i;
 
+	i = -1;
 	if (ft_strchr(str, '$') == 0)
 		return (ft_strdup(str));
 	word_tab = dollar_word_to_tab(str);
@@ -15,8 +16,7 @@ char	*var_expander(char *str)
 	new_word_tab = ft_calloc(ft_tablen(word_tab) + 1, sizeof(char *));
 	if (!new_word_tab)
 		return (NULL);
-	i = 0;
-	while (word_tab[i++])
+	while (word_tab[++i])
 	{
 		if (ft_strlen(word_tab[i]) > 1 && word_tab[i][0] == '$')
 			new_word_tab[i] = var_to_value(word_tab[i]);

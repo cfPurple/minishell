@@ -9,7 +9,7 @@ char	*var_to_value(char *str)
 		new_str = ft_itoa(g_error);
         return (new_str);
     }
-	//else
-		//new_str = var_to_env_value(str);
-	return (str);
+	else
+		new_str = var_to_env_value(str);
+	return (new_str);
 }

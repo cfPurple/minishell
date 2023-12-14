@@ -18,8 +18,8 @@ int	count_dollar_word(char *str)
 			in_dollarw = 1;
 			nbr++;
 		}
-		else if (in_dollarw == 1 && (ft_isalnum(str[i]) != 0 ||
-            str[i] == '$' || str[i] == '_' || str[i] == '?'))
+		else if (in_dollarw == 1 && (ft_isalnum(str[i]) == 0 &&
+            str[i] != '$' && str[i] != '_' && str[i] != '?'))
 		{
 			in_dollarw = 0;
 			nbr++;
