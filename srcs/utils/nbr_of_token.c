@@ -14,6 +14,8 @@ int nbr_of_token(char *str)
 	while (str[i])
 	{
 		start = start_of_word(str, i);
+		if (!str[start])
+			break ;
 		end = end_of_word(str, start);
 		i = end;
 		nbr++;
