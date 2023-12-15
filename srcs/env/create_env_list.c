@@ -6,7 +6,7 @@
 /*   By: rdias-ba <rdias-ba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 02:24:37 by rdias-ba          #+#    #+#             */
-/*   Updated: 2023/12/14 15:58:41 by rdias-ba         ###   ########.fr       */
+/*   Updated: 2023/12/15 17:42:45 by rdias-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_env	*create_env_list(char **env)
 	tmp = NULL;
 	while (*env)
 	{
-		if (!add_var_to_env(&lst, *env))
+		if (!env_init_var(&lst, *env))
 		{
 			while (lst)
 			{

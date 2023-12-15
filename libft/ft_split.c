@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cfelix <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: rdias-ba <rdias-ba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 17:46:53 by cfelix            #+#    #+#             */
-/*   Updated: 2022/12/06 17:48:35 by cfelix           ###   ########.fr       */
+/*   Updated: 2023/12/15 18:28:23 by rdias-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,9 +90,7 @@ char	**ft_split(char const *s, char c)
 {
 	char	**tab;
 	char	*str;
-	int n;
 
-	n = 0;
 	if (!s)
 		return (NULL);
 	str = (char *)s;
@@ -101,12 +99,4 @@ char	**ft_split(char const *s, char c)
 		return (NULL);
 	tab = writetab(tab, str, c);
 	return (tab);
-}
-
-int main()
-{
-	char c = ' ';
-	char *str = "coucou cest moi fr erv erve ve e";
-	ft_split(str, c);
-	return 0;
 }

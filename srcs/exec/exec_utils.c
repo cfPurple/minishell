@@ -6,7 +6,7 @@
 /*   By: rdias-ba <rdias-ba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 15:59:13 by rdias-ba          #+#    #+#             */
-/*   Updated: 2023/11/24 01:07:45 by rdias-ba         ###   ########.fr       */
+/*   Updated: 2023/12/15 17:48:56 by rdias-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static void	free_big_tab(char ***tab)
 	{
 		if (tab[i])
 		{
-			ft_free_tabs(tab[i]);
+			free_tab(tab[i]);
 			tab[i] = NULL;
 		}
 		i++;
@@ -85,7 +85,7 @@ static char	**join_all(char ***cmd_tab)
 		{
 			final_tab[k] = ft_strdup(cmd_tab[i][j]);
 			if (!final_tab[k])
-				return (ft_free_tabs(final_tab), NULL);
+				return (free_tab(final_tab), NULL);
 			k++;
 		}
 	}

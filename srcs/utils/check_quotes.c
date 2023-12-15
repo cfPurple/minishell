@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_quotes.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cfelix <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: rdias-ba <rdias-ba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 10:52:39 by cfelix            #+#    #+#             */
-/*   Updated: 2023/12/15 10:52:40 by cfelix           ###   ########.fr       */
+/*   Updated: 2023/12/15 17:52:21 by rdias-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ int check_quotes(char *str)
     i = 0;
 	squote = 0;
 	dquote = 0;
-    if (!str)
-        return (0);
 	while (str[i])
 	{
 		if (str[i] == '\'' && dquote == 0)

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   count_dollar_word.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cfelix <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: rdias-ba <rdias-ba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 10:53:20 by cfelix            #+#    #+#             */
-/*   Updated: 2023/12/15 10:53:22 by cfelix           ###   ########.fr       */
+/*   Updated: 2023/12/15 17:53:06 by rdias-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-include "minishell.h"
+#include "minishell.h"
 
 int	count_dollar_word(char *str)
 {

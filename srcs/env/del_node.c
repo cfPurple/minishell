@@ -6,7 +6,7 @@
 /*   By: rdias-ba <rdias-ba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 03:23:54 by rdias-ba          #+#    #+#             */
-/*   Updated: 2023/12/14 16:02:34 by rdias-ba         ###   ########.fr       */
+/*   Updated: 2023/12/15 17:43:37 by rdias-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ t_env	*del_node(t_env *env, char *to_del)
 		}
 		if (compare_keys(env->var, to_del))
 		{
-			run_second_keys(env, prev, next);
+			run_second_if(env, prev, next);
 			break ;
 		}
 		++pos;

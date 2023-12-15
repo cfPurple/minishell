@@ -6,7 +6,7 @@
 /*   By: rdias-ba <rdias-ba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 17:12:09 by rdias-ba          #+#    #+#             */
-/*   Updated: 2023/12/14 15:11:23 by rdias-ba         ###   ########.fr       */
+/*   Updated: 2023/12/15 17:20:55 by rdias-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	replace_directory(void)
 	old_wd = find_value("PWD");
 	wd = getcwd(NULL, 0);
 	if (!wd)
-		return (g_error == 127, (void)print_error_msg("getcwd fail\n"));
+		return (g_error = 127, (void)print_error_msg("getcwd fail\n"));
 	tmp = wd;
 	wd = ft_strjoin(cur_pwd, wd);
 	free(tmp);
@@ -104,7 +104,7 @@ int	exec_cd(t_token *token, int in, int out)
 {
 	char	wd;
 
-	wd = NULL;
+	wd = '\0';
 	g_error = 0;
 	if (in != STDIN_FILENO || out != STDOUT_FILENO)
 		return (true);
@@ -120,7 +120,7 @@ int	exec_cd(t_token *token, int in, int out)
 		if (chdir(token->word) == -1)
 		{
 			g_error = 1;
-			perror(wd);
+			perror(&wd);
 		}
 		replace_directory();
 	}

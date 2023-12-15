@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   check_token.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cfelix <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: rdias-ba <rdias-ba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 10:53:09 by cfelix            #+#    #+#             */
-/*   Updated: 2023/12/15 10:53:12 by cfelix           ###   ########.fr       */
+/*   Updated: 2023/12/15 17:52:51 by rdias-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-include "minishell.h"
+#include "minishell.h"
 
 int	check_token(t_type token, t_type last_token)
 {

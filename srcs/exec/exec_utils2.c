@@ -6,7 +6,7 @@
 /*   By: rdias-ba <rdias-ba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 16:56:29 by rdias-ba          #+#    #+#             */
-/*   Updated: 2023/12/14 16:21:22 by rdias-ba         ###   ########.fr       */
+/*   Updated: 2023/12/15 17:49:41 by rdias-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static char	**create_path(void)
 	path_copy = copy_path();
 	if (!path_copy)
 	{
-		ft_pustr_fd("Error occurred finding path!\n", 2);
+		ft_putstr_fd("Error occurred finding path!\n", 2);
 		return (NULL);
 	}
 	split_path = ft_split(path_copy, ':');
@@ -67,8 +67,8 @@ char	*init_path(char *cmd)
 		}
 		individual_path = ft_strjoin(paths[i], cmd);
 		if (access(individual_path, X_OK) == 0)
-			return (free_tabs(paths), individual_path);
+			return (free_tab(paths), individual_path);
 		i++;
 	}
-	return (free_tabs(paths), individual_path);
+	return (free_tab(paths), individual_path);
 }

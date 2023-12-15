@@ -116,6 +116,7 @@ int		exec_export(t_token *token);
 int		exec_unset(t_token *token);
 int		exec_env(int fd);
 int		exec_exit(t_token *token, t_cmd *cmd);
+char	**convert_args_to_tab(t_token *args);
 
 /***********ENV************/
 t_env	**get_env(char **env, char *to_add, char *to_del);
@@ -171,7 +172,6 @@ int		count_dollar_word(char *str);
 int		end_of_dollar_word(char *str, int i);
 char	*var_to_value(char *str);
 int		open_quote(char *str, int start);
-void    print_pars_err(char *str);
 void	replace_word(t_token *token, char *new_word);
 int		is_quote_heredoc(t_token *rdir);
 int		get_tab_len(char **tab);
@@ -181,9 +181,7 @@ char	*join_slash(char	const *s1, char	const *s2);
 char	*join_all_str(char **split);
 int		builtins(char *path, t_cmd *cmd);
 bool	strchr_bool(const char *s, int c);
-void	free_tabs(char **tab);
 void	del_tokens(t_token *tokens);
-void	free_2_tabs(char **s1, char **s2);
 void	free_cmd(t_cmd *cmd);
 void	free_all_env(t_env *env);
 void	del_t_cmd(t_cmd *cmd);
@@ -193,5 +191,10 @@ void	dump_add(void *content, t_list *garbage);
 void	dump_del(t_list *garbage);
 char	**join_paths(char **split_path, char *c);
 void	print_sig_error(void);
+int		print_error_msg(char *msg);
+void	print_export_error(char *err);
+void	print_unset_error(char *err);
+int		print_exit_error(t_cmd *cmd, char *var);
+int		ft_strcmp(char *s1, char *s2);
 
 #endif
