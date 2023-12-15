@@ -20,7 +20,5 @@ int nbr_of_token(char *str)
 		i = end;
 		nbr++;
 	}
-	printf("\nyo");
-	printf("\n%i\n", nbr);
 	return (nbr);
 }
