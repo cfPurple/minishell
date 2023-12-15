@@ -140,7 +140,7 @@ void	get_shlvl(void);
 
 
 /**********UTILS************/
-void	minishell(int ac, char **av, char **env)
+void	minishell(int ac, char **av, char **env);
 int 	check_quotes(char *str);
 int		check_spaces(char *str);
 int 	nbr_of_token(char *str);
