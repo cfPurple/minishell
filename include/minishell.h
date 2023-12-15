@@ -4,6 +4,14 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <unistd.h>
+# include <string.h>
+# include <stdbool.h>
+# include <fcntl.h>
+# include <signal.h>
+# include <sys/types.h>
+# include <sys/wait.h>
+# include <termios.h>
+# include <errno.h>
 # include <readline/readline.h>
 # include <readline/history.h>
 # include "../libft/libft.h"
@@ -11,6 +19,7 @@
 #define ERROR -1
 #define SUCCESS 0
 
+# define ERROR_STOP "Something wrong happened forcing Minishell to stop\n"
 # define ERROR_PARSING "$> bash : syntax error near unexpected token"
 
 typedef enum e_type
@@ -41,7 +50,7 @@ typedef enum e_quote
 
 extern int	g_error;
 
-int main(int ac, char **av);
+int main(int ac, char **av, char **env);
 
 /**********PARSING**********/
 int		line_parsing(char *str);
@@ -60,6 +69,8 @@ char	*var_expander(char *str);
 
 
 /**********UTILS************/
+void 	minishell(int ac, char **av, char **env);
+int 	display_and_read(void);
 int 	check_quotes(char *str);
 int		check_spaces(char *str);
 int 	nbr_of_token(char *str);
