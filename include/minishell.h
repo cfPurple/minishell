@@ -194,10 +194,4 @@ void	dump_del(t_list *garbage);
 char	**join_paths(char **split_path, char *c);
 void	print_sig_error(void);
 
-/*************TEST***************/
-void	print_token_list(t_token *lst);
-
-
-
-
 #endif
