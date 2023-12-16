@@ -111,7 +111,6 @@ UTILS_FILES	    = add_new_node.c \
 				  join_free.c \
 				  join_paths.c \
 				  join_slash.c \
-				  join_str 2.c \
 				  join_str.c \
 				  join_str2.c \
 				  last_token.c \
@@ -121,7 +120,7 @@ UTILS_FILES	    = add_new_node.c \
 				  print_error_msg.c \
 				  print_exit_error.c \
 				  print_export_error.c \
-				  print_pars_err.c.c \
+				  print_pars_err.c \
 				  print_sig_error.c \
 				  print_unset_error.c \
 				  quote_type.c \
@@ -131,6 +130,7 @@ UTILS_FILES	    = add_new_node.c \
 				  remove_quote.c \
 				  replace_world.c \
 				  start_of_qword.c \
+				  expand_heredoc_var.c \
 				  start_of_word.c \
 				  strchr_bool.c \
 				  token_add_back.c \
@@ -143,7 +143,7 @@ CFLAGS		= -Wall -Werror -Wextra -g3
 IFLAGS		= -I $(INCLUDE)
 RM 			= rm -r -f
 
-LIB_DIR		= ./libft/
+LIB_DIR		= ./libft
 LIBFT		= $(LIB_DIR)/libft.a
 MAKE_LIB	= make -C $(LIB_DIR)
 
