@@ -83,7 +83,7 @@ static void	get_cd_path(char	**path)
 		cdpath = join_slash(cdpath, *path);
 	free(*path);
 	*path = cdpath;
-	fd = open(*path, __O_DIRECTORY);
+	fd = open(*path, O_DIRECTORY);
 	if (!fd)
 	{
 		free(*path);
