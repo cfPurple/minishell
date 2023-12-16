@@ -112,7 +112,7 @@ int	exec_cd(t_token *token, int in, int out)
 		return (g_error = 1, print_error_msg(ERROR_ARG_CD), true);
 	if (!find_value("PWD"))
 		create_directory();
-	if (!ft_strcmp("-", token->word) == 0)
+	if (ft_strcmp("-", token->word) == 0)
 		change_directory();
 	else
 	{
