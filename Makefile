@@ -164,7 +164,7 @@ OBJS		= $(SRCS:$(SRCS_DIR)/%.c=$(BUILD_DIR)/%.o)
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJS)
-			$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIBFT)
+			$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIBFT) -lreadline
 
 $(BUILD_DIR)/%.o: $(SRCS_DIR)/%.c 
 			mkdir -p $(@D)
