@@ -18,7 +18,7 @@ int display_and_read(void)
 
     while(1)
     {
-        str = readline("minishell $> ");
+        str = readline("$> ");
         if (str == NULL)
             break;
         line_parsing(str);
