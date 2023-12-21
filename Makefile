@@ -89,7 +89,6 @@ UTILS_FILES	    = add_new_node.c \
 				  count_word.c \
 				  create_new_node.c \
 				  del_t_cmd.c \
-				  delete_all.c \
 				  dollar_word_to_tab.c \
 				  dump_add.c \
 				  dump_del.c \

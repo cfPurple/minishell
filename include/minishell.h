@@ -185,7 +185,6 @@ void	del_tokens(t_token *tokens);
 void	free_cmd(t_cmd *cmd);
 void	free_all_env(t_env *env);
 void	del_t_cmd(t_cmd *cmd);
-t_token	*delete_all(t_token **node);
 t_token	*goto_last_node(t_token *token);
 void	dump_add(void *content, t_list *garbage);
 void	dump_del(t_list *garbage);

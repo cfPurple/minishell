@@ -19,9 +19,9 @@ void	free_cmd(t_cmd *cmd)
 	while (cmd)
 	{
 		if (cmd->args)
-			delete_all(&cmd->args);
+			free_all_token(&cmd->args);
 		if (cmd->rdir)
-			delete_all(&cmd->rdir);
+			free_all_token(&cmd->rdir);
 		if (cmd->fd[0] != 0)
 			close(cmd->fd[0]);
 		if (cmd->fd[1] != 1)
