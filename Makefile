@@ -107,7 +107,6 @@ UTILS_FILES	    = add_new_node.c \
 				  get_tab_len.c \
 				  get_token_len.c \
 				  goto_last_node.c \
-				  join_free.c \
 				  join_paths.c \
 				  join_slash.c \
 				  join_str.c \
