@@ -23,8 +23,8 @@
 
 # define ERROR_STOP "Something wrong happened forcing Minishell to stop\n"
 # define ERROR_PARSING "$> bash : syntax error near unexpected token"
-# define ERROR_RED "No such file or directory\n"
-# define ERROR_ARG_CD "Wrong number of argument\n"
+# define ERROR_RED " No such file or directory\n"
+# define ERROR_ARG_CD " Wrong number of argument\n"
 # define ERROR_EXP_START "export: "
 # define ERROR_EXP_END "': not a valid identifier\n"
 # define ERROR_TO_MANY "$> bash: exit: too many arguments\n"
