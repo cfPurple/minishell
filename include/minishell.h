@@ -117,6 +117,8 @@ int		exec_unset(t_token *token);
 int		exec_env(int fd);
 int		exec_exit(t_token *token, t_cmd *cmd);
 char	**convert_args_to_tab(t_token *args);
+int		only_num(char *str);
+int		check_char(char *str);
 
 /***********ENV************/
 t_env	**get_env(char **env, char *to_add, char *to_del);
