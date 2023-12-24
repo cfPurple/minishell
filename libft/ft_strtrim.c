@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cfelix <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: rdias-ba <rdias-ba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 18:03:57 by cfelix            #+#    #+#             */
-/*   Updated: 2022/12/06 18:05:17 by cfelix           ###   ########.fr       */
+/*   Updated: 2023/12/15 18:26:52 by rdias-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,9 @@ static int	isaset(char const s1, char const *set)
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	int		i;
 	char	*tab;
 	int		len;
 
-	i = 0;
 	if (!s1)
 		return (NULL);
 	while (isaset(*s1, set))

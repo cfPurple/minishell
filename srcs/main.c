@@ -1,23 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cfelix <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/15 10:51:54 by cfelix            #+#    #+#             */
+/*   Updated: 2023/12/24 14:03:13 by cfelix           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 int	g_error;
 
-int main(int ac, char **av)
+int	main(int ac, char **av, char **env)
 {
-    char *str;
-
-    (void)av;
-    if (ac != 1)
-        return (0);
-    while(1)
-    {
-        str = readline("minishell $> ");
-        if (str == NULL)
-            break;
-        line_parsing(str);
-        add_history(str);
-        rl_on_new_line();
-        free(str);
-    }
-    return (0);
+	(void)av;
+	if (ac != 1)
+		return (0);
+	minishell(ac, av, env);
+	return (0);
 }

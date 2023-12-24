@@ -46,9 +46,8 @@ SRC = ft_bzero.c \
 	ft_putchar_fd.c \
 	ft_putstr_fd.c \
 	ft_putendl_fd.c \
-	ft_putnbr_fd.c
-	
-SRCB = ft_lstnew.c \
+	ft_putnbr_fd.c \
+	ft_lstnew.c \
 	ft_lstadd_front.c \
 	ft_lstsize.c \
 	ft_lstlast.c \
@@ -59,14 +58,9 @@ SRCB = ft_lstnew.c \
 	ft_lstmap.c
 
 OBJ = $(SRC:.c=.o)
-OBJB = $(SRCB:.c=.o)
 
 $(NAME): $(OBJ)
 		ar rc $(NAME) $(OBJ)
-		ranlib $(NAME)
-
-bonus: $(OBJB)
-		ar rc $(NAME) $(OBJB)
 		ranlib $(NAME)
 
 %.o: %.c
@@ -75,7 +69,7 @@ bonus: $(OBJB)
 all: $(NAME) 
 
 clean:
-		rm -f $(OBJ) $(OBJB)
+		rm -f $(OBJ)
 
 fclean: clean
 		rm -f $(NAME)

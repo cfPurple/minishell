@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cfelix <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: rdias-ba <rdias-ba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 17:46:53 by cfelix            #+#    #+#             */
-/*   Updated: 2022/12/06 17:48:35 by cfelix           ###   ########.fr       */
+/*   Updated: 2023/12/24 14:00:21 by cfelix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
 
-static void freetab(char **tab)
+static void	freetab(char **tab)
 {
-	int n;
+	int	n;
 
 	n = 0;
 	while (tab[n])
@@ -25,6 +25,7 @@ static void freetab(char **tab)
 	}
 	free(tab);
 }
+
 static int	w_count(char *s, char c)
 {
 	int	nbr;
@@ -85,14 +86,11 @@ static char	**writetab(char **tab, char *str, char c)
 	return (tab);
 }
 
-
 char	**ft_split(char const *s, char c)
 {
 	char	**tab;
 	char	*str;
-	int n;
 
-	n = 0;
 	if (!s)
 		return (NULL);
 	str = (char *)s;
@@ -101,12 +99,4 @@ char	**ft_split(char const *s, char c)
 		return (NULL);
 	tab = writetab(tab, str, c);
 	return (tab);
-}
-
-int main()
-{
-	char c = ' ';
-	char *str = "coucou cest moi fr erv erve ve e";
-	ft_split(str, c);
-	return 0;
 }
