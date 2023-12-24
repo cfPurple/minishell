@@ -56,8 +56,6 @@ int	exec_export(t_token *token)
 
 	while (token)
 	{
-		if (!token)
-			return (true);
 		if (only_num(token->word) == 1 || check_char(token->word) == 1)
 			return (g_error = 1, print_export_error(token->word), true);
 		if (!strchr_bool(token->word, '=') && token->next == NULL)
