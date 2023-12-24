@@ -20,6 +20,7 @@ BUILTINS_FILES	= exec_cd.c \
 				  exec_export.c \
 				  exec_pwd.c \
 				  exec_unset.c \
+				  exec_export_utils.c \
 				  
 BUILTINS		= $(addprefix $(BUILTINS_DIR), $(BUILTINS_FILES))
 
