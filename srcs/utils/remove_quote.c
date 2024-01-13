@@ -23,14 +23,14 @@ char	*remove_quote(char *str)
 	new_str = ft_calloc(ft_strlen(str), sizeof(char));
 	if (!new_str)
 		return (NULL);
-	while (str[i++] && i < (int)ft_strlen(str)
+	while (str[i] && i < (int)ft_strlen(str)
 		&& j < (int)ft_strlen(str))
 	{
 		if ((str[i] == '\'' || str[i] == '\"')
 			&& quote_type(str[i]) == quote_type(str[0]))
 			i++;
-		new_str[j] = str[i];
-		j++;
+		else
+			new_str[j++] = str[i++];
 	}
 	new_str[j] = '\0';
 	return (new_str);
