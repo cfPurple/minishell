@@ -25,8 +25,6 @@ int	open_quote(char *str, int start)
 	{
 		if (str[i] == '\'' && str[i + 1] != '\'' && double_q == 0)
 			simple_q = !simple_q;
-		else if (str[i] == '\'' && str[i + 1] == '\'' && simple_q == 0)
-			double_q = !double_q;
 		else if (str[i] == '\"' && simple_q == 0)
 			double_q = !double_q;
 		i++;
