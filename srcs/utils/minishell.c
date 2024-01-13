@@ -21,5 +21,5 @@ void	minishell(int ac, char **av, char **env)
 	free_all_env(*get_env(0, 0, 0));
 	rl_clear_history();
 	printf("Minishell stopped normally\n");
-	exit(0);
+	exit(1);
 }
