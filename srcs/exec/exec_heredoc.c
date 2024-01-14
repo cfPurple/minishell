@@ -41,7 +41,7 @@ static int	heredoc_expand(t_token *rdir)
 	fd = create_heredoc(1);
 	if (fd < 0)
 		return (perror(limit), fd);
-	if (rdir->next->type == LIMITOR)
+	if (rdir->next->type == LIMITOR)IN_F
 		limit = ft_strdup(rdir->next->word);
 	while (1)
 	{
@@ -109,7 +109,7 @@ int	exec_rdir_heredoc(t_cmd *cmd)
 		return ((close(ret), write(STDOUT_FILENO, "\n", 1), g_error = 130, -1));
 	}
 	fd = ((close(ret), init_signal(false), create_heredoc(0)));
-	if (cmd->fd[IN] != STDOUT_FILENO)
+	if (cmd->fd[IN] != STDIN_FILENO)
 	{
 		dup2(fd, cmd->fd[IN]);
 		close(cmd->fd[IN]);
