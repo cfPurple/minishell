@@ -18,13 +18,9 @@ static int	check_n_flag(char *str)
 {
 	if (!*str)
 		return (true);
-	while (*str)
-	{
-		if (*str != '-' && *str != 'n' && *str != ' ')
-			return (false);
-		str++;
-	}
-	return (true);
+	if (str[0] == '-' && str[1] == 'n' && ft_strlen(str) == 2)
+		return (true);
+	return (false);
 }
 
 // Parcour les tokens et affiche les variables sur la console
