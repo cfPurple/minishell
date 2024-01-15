@@ -14,8 +14,8 @@
 
 int	add_type(char *str, int last_token)
 {
-	if (ft_strlen(str) == 1 && (*str == '<' || *str == '>' 
-		|| *str == '|'))
+	if (ft_strlen(str) == 1 && (*str == '<' || *str == '>'
+			|| *str == '|'))
 	{
 		if (*str == '<')
 			return (R_IN);
