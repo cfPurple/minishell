@@ -41,7 +41,7 @@ static int	heredoc_expand(t_token *rdir)
 	fd = create_heredoc(1);
 	if (fd < 0)
 		return (perror(limit), fd);
-	if (rdir->next->type == LIMITOR)IN_F
+	if (rdir->next->type == LIMITORIN_F
 		limit = ft_strdup(rdir->next->word);
 	while (1)
 	{
