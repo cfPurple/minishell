@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_export_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cfelix <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: rdias-ba <rdias-ba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 14:11:48 by cfelix            #+#    #+#             */
-/*   Updated: 2023/12/24 14:11:53 by cfelix           ###   ########.fr       */
+/*   Updated: 2024/01/16 10:42:57 by rdias-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,10 @@ int	check_char(char *str)
 		i++;
 	}
 	return (0);
+}
+
+void	free_export_utils(char *str1, char *str2)
+{
+	free(str1);
+	free(str2);
 }

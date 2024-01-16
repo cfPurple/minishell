@@ -6,7 +6,7 @@
 /*   By: rdias-ba <rdias-ba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 16:56:29 by rdias-ba          #+#    #+#             */
-/*   Updated: 2023/12/15 17:49:41 by rdias-ba         ###   ########.fr       */
+/*   Updated: 2024/01/16 10:51:14 by rdias-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ char	*init_path(char *cmd)
 	paths = create_path();
 	individual_path = NULL;
 	i = 0;
+	if (!paths)
+		return (NULL);
 	while (paths[i] != 0)
 	{
 		if (individual_path != NULL)

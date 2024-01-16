@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cfelix <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: rdias-ba <rdias-ba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 14:03:47 by cfelix            #+#    #+#             */
-/*   Updated: 2023/12/24 14:07:44 by cfelix           ###   ########.fr       */
+/*   Updated: 2024/01/16 10:42:47 by rdias-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,7 @@ char	*init_path(char *cmd);
 int		exec_echo(t_token *token, int fd);
 int		exec_cd(t_token *token, int in, int out);
 int		exec_pwd(int fd);
-int		exec_export(t_token *token);
+int		exec_export(t_token *token, int fd);
 int		exec_unset(t_token *token);
 int		exec_env(int fd);
 int		exec_exit(t_token *token, t_cmd *cmd);
@@ -195,6 +195,7 @@ char	*join_all_str(char **split);
 int		builtins(char *path, t_cmd *cmd);
 bool	strchr_bool(const char *s, int c);
 void	del_tokens(t_token *tokens);
+void	free_export_utils(char *str1, char *str2);
 void	free_cmd(t_cmd *cmd);
 void	free_all_env(t_env *env);
 void	del_t_cmd(t_cmd *cmd);
