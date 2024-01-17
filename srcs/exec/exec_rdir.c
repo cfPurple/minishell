@@ -6,7 +6,7 @@
 /*   By: rdias-ba <rdias-ba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 14:21:46 by rdias-ba          #+#    #+#             */
-/*   Updated: 2023/12/14 16:19:41 by rdias-ba         ###   ########.fr       */
+/*   Updated: 2024/01/17 09:05:01 by rdias-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ int	exec_rdir(t_cmd *cmd)
 		else if (cmd->rdir->type == APPEND)
 			ret = exec_rdir_append(cmd);
 		else if (cmd->rdir->type == HEREDOC)
-			return (exec_rdir_heredoc(cmd));
+			ret = exec_rdir_heredoc(cmd);
 		if (ret == ERROR)
 			return (g_error = 1, ERROR);
 		cmd->rdir = cmd->rdir->next;
