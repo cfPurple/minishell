@@ -23,8 +23,10 @@ int	builtins(char *path, t_cmd *cmd)
 		exec = exec_cd(cmd->args->next, cmd->fd[0], cmd->fd[1]);
 	else if (ft_strcmp(path, "pwd") == 0)
 		exec = exec_pwd(cmd->fd[1]);
-	else if (ft_strcmp(path, "export") == 0)
+	else if (ft_strcmp(path, "export") == 0 && cmd->args->next->type == WORD)
 		exec = exec_export(cmd->args->next);
+	else if (ft_strcmp(path, "export") == 0)
+		exec = exec_env(cmd->fd[1]);
 	else if (ft_strcmp(path, "unset") == 0)
 		exec = exec_unset(cmd->args->next);
 	else if (ft_strcmp(path, "env") == 0)
