@@ -24,7 +24,12 @@ int	builtins(char *path, t_cmd *cmd)
 	else if (ft_strcmp(path, "pwd") == 0)
 		exec = exec_pwd(cmd->fd[1]);
 	else if (ft_strcmp(path, "export") == 0)
-		exec = exec_export(cmd->args->next);
+	{
+		if(!cmd->args->next)
+			exec = exec_env(cmd->fd[1]);
+		else
+			exec = exec_export(cmd->args->next);
+	}
 	else if (ft_strcmp(path, "unset") == 0)
 		exec = exec_unset(cmd->args->next);
 	else if (ft_strcmp(path, "env") == 0)
