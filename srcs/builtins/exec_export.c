@@ -6,7 +6,7 @@
 /*   By: rdias-ba <rdias-ba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 18:54:40 by rdias-ba          #+#    #+#             */
-/*   Updated: 2024/01/16 10:43:31 by rdias-ba         ###   ########.fr       */
+/*   Updated: 2024/01/18 11:45:58 by rdias-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,31 +47,13 @@ static char	*copy_key_and_equal(char *var, char *new_key)
 	return (new_key);
 }
 
-static void	export_no_option(int fd)
-{
-	t_env	*env;
-
-	env = *get_all_env();
-	while (env)
-	{
-		ft_putstr_fd("declare -x ", fd);
-		ft_putstr_fd(env->key, fd);
-		ft_putstr_fd("=\"", fd);
-		ft_putstr_fd(env->value, fd);
-		ft_putstr_fd("\"", fd);
-		write(fd, "\n", 1);
-		env = env->next;
-	}
-	g_error = 0;
-}
-
 int	exec_export(t_token *token, int fd)
 {
 	char	*nk;
 	char	*cpy;
 
 	if (!token)
-		export_no_option(fd);
+		exec_env(fd);
 	while (token)
 	{
 		if (only_num(token->word) == 1 || check_char(token->word) == 1)
@@ -86,8 +68,7 @@ int	exec_export(t_token *token, int fd)
 		if (!check_cpy(&cpy))
 			return (true);
 		cpy = ((nk = copy_key_and_equal(token->word, nk), ft_strdup(cpy)));
-		free(token->word);
-		value_check(nk);
+		(free(token->word), value_check(nk));
 		token->word = ft_strjoin(nk, cpy);
 		free_export_utils(nk, cpy);
 		token = ((add_to_env(token->word)), token->next);
